@@ -26,6 +26,13 @@ var starWars = {
             starWars.attack();
             console.log(starWars);
         });
+        this.updatePage();
+    },
+    updatePage: function(){
+        $('#jarJarHealth').text(this.fighters.jarJarBinks.health);
+        $('#anakinHealth').text(this.fighters.anakin.health);
+        $('#kenobiHealth').text(this.fighters.generalKenobi.health);
+
     },
     chooseFighter: function(){
         if(starWars.chosenPlayer === ''){
@@ -48,7 +55,20 @@ var starWars = {
             this.fighters[this.chosenPlayer].health -= this.fighters[this.chosenEnemy].counterAttack;
             this.fighters[this.chosenEnemy].health -= this.fighters[this.chosenPlayer].attack;
             this.fighters[this.chosenPlayer].attack += this.fighters[this.chosenPlayer].baseAttack;
+            this.updatePage();
+            if(this.fighters[this.chosenPlayer].health <= 0){
+                this.gameLost();
+            }
+            if(this.fighters[this.chosenEnemy].health <= 0){
+                this.enemyKilled();
+            }
         }
+    },
+    gameLost: function(){
+
+    },
+    enemyKilled: function(){
+
     }
 }
 
