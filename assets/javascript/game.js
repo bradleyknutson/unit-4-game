@@ -1,5 +1,6 @@
 var starWars = {
-    chosenFighter: '',
+    chosenPlayer: '',
+    chosenEnemy: '',
     fighters: {
         jarJarBinks: {
             health: 250,
@@ -18,13 +19,22 @@ var starWars = {
         }
     },
     chooseFighter: function(){
-        if(!starWars.chosenFighter){
+        if(starWars.chosenPlayer === ''){
             $('.fighter').on('click', function(){
-            starWars.chosenFighter = $(this).attr('value');
-            })
+                starWars.chosenPlayer = $(this).attr('value');
+                $('.fighter').unbind();
+                starWars.chooseFighter();
+            });
+        }else{
+            $('.fighter').on('click', function(){
+                if($(this).attr('value') !== starWars.chosenPlayer){
+                    starWars.chosenEnemy = $(this).attr('value');
+                    $('.fighter').unbind();
+                }
+            });
         }
     }
 }
 
-// starWars.gameStart();
 
+starWars.chooseFighter();
