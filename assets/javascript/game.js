@@ -3,7 +3,7 @@ var starWars = {
     chosenEnemy: '',
     fighters: {
         jarJarBinks: {
-            health: 250,
+            health: 10000,
             attack: 5,
             baseAttack: 5,
             counterAttack: 20,
@@ -72,11 +72,26 @@ var starWars = {
             }
         }
     },
-    gameLost: function(){
-
-    },
     enemyKilled: function(){
-
+        var numKilled = 0;
+        $(".fighterDiv[value=" + this.chosenEnemy + "]").css('visibility', 'hidden');
+        this.chosenEnemy = '';
+        this.chooseFighter();
+        Object.keys(this.fighters).forEach(element => {
+            if(this.fighters[element].health <= 0){
+                numKilled++;
+            }
+        });
+        if(numKilled === Object.keys(this.fighters).length - 1){
+            this.gameWon();
+        }
+        
+    },
+    gameLost: function(){
+        console.log("You've lost");
+    },
+    gameWon: function(){
+        alert("You've won");
     }
 }
 
