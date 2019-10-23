@@ -19,9 +19,16 @@ var starWars = {
             attack: 7,
             baseAttack: 7,
             counterAttack: 25
+        },
+        grievous: {
+            health: 300,
+            attack: 3,
+            baseAttack: 3,
+            counterAttack: 15
         }
     },
     gameStart: function(){
+        this.chooseFighter();
         $('#attack').on('click', function(){
             starWars.attack();
             console.log(starWars);
@@ -32,6 +39,7 @@ var starWars = {
         $('#jarJarHealth').text(this.fighters.jarJarBinks.health);
         $('#anakinHealth').text(this.fighters.anakin.health);
         $('#kenobiHealth').text(this.fighters.generalKenobi.health);
+        $('#grievousHealth').text(this.fighters.grievous.health);
 
     },
     chooseFighter: function(){
@@ -74,4 +82,3 @@ var starWars = {
 
 
 starWars.gameStart();
-starWars.chooseFighter();
