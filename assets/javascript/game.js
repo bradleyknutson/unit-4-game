@@ -72,7 +72,7 @@ var starWars = {
         }
     },
     chooseFighter: function(){
-        if(starWars.chosenPlayer === ''){
+        if(!starWars.chosenPlayer){
             $('.fighter').on('click', function(){
                 starWars.chosenPlayer = $(this).attr('value');
                 $('.fighter').unbind();
@@ -82,12 +82,12 @@ var starWars = {
             });
         }else{
             $('.fighter').on('click', function(){
-                if($(this).attr('value') !== starWars.chosenPlayer){
+                // if($(this).attr('value') !== starWars.chosenPlayer){
                     starWars.chosenEnemy = $(this).attr('value');
                     $('.fighter').unbind();
                     starWars.updatePage();
                     $('#chosenEnemy').css('visibility', 'visible');
-                }
+                // }
             });
         }
     },
