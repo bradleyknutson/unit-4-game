@@ -67,6 +67,8 @@ var starWars = {
             $('.fighterDiv[value=' + this.chosenEnemy + ']').css('visibility', 'hidden');
             $('#enemyImage').attr('src', 'assets/images/' + this.chosenEnemy + '.png');
             $('#enemyHealth').text(this.fighters[this.chosenEnemy].health);
+        }else{
+            $('#chosenEnemy').css('visibility', 'hidden');
         }
     },
     chooseFighter: function(){
