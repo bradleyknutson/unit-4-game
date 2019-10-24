@@ -1,5 +1,17 @@
 * {
     box-sizing: border-box;
+    color: #ffffff;
+}
+
+body {
+    background: url(../images/gray_sand/gray_sand/gray_sand_@2X.png);
+}
+
+.main-content {
+    margin-top: 20px;
+    background: url(../images/124178-2.jpg);
+    background-size: 100%;
+    min-height: 704px;
 }
 
 .fighter {
@@ -14,12 +26,12 @@
 
 #chosenFighter {
     visibility: hidden;
-    border: 5px solid greenyellow;
+    /* border: 5px solid #2719C7; */
 }
 
 #chosenEnemy {
     visibility: hidden;
-    border: 5px solid red;
+    /* border: 5px solid red; */
 }
 
 #fighterRow {
@@ -28,4 +40,12 @@
 
 p {
     text-align: center;
+    font-size: 1.5em;
+    text-shadow: 3px 3px 3px black;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+    text-shadow: 3px 3px 3px black;
 }

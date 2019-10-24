@@ -4,36 +4,42 @@ var starWars = {
     fighters: {
         jarJarBinks: {
             health: 10000,
+            baseHealth: 10000,
             attack: 5,
             baseAttack: 5,
             counterAttack: 20,
         },
         generalKenobi: {
             health: 150,
+            baseHealth: 150,
             attack: 10,
             baseAttack: 10,
             counterAttack: 30
         },
         anakin: {
             health: 200,
+            baseHealth: 200,
             attack: 7,
             baseAttack: 7,
             counterAttack: 25
         },
         grievous: {
             health: 300,
+            baseHealth: 300,
             attack: 3,
             baseAttack: 3,
             counterAttack: 15
         },
         palpatine: {
             health: 200,
+            baseHealth: 200,
             attack: 10,
             baseAttack: 10,
             counterAttack: 20
         },
         darthMaul: {
             health: 125,
+            baseHealth: 125,
             attack: 30,
             baseAttack: 30,
             counterAttack: 22
@@ -44,12 +50,9 @@ var starWars = {
         $('#attack').on('click', function(){
             starWars.attack();
         });
-        $('#jarJarHealth').text(this.fighters.jarJarBinks.health);
-        $('#anakinHealth').text(this.fighters.anakin.health);
-        $('#kenobiHealth').text(this.fighters.generalKenobi.health);
-        $('#grievousHealth').text(this.fighters.grievous.health);
-        $('#palpatineHealth').text(this.fighters.palpatine.health);
-        $('#darthMaulHealth').text(this.fighters.darthMaul.health);
+        Object.keys(this.fighters).forEach(element => {
+            $('#' + element + 'Health').text(starWars.fighters[element].health);
+        });
         this.updatePage();
     },
     updatePage: function(){
@@ -57,6 +60,8 @@ var starWars = {
             $(".fighterDiv[value=" + this.chosenPlayer + "]").css('visibility', 'hidden');
             $('#fighterImage').attr('src', 'assets/images/' + this.chosenPlayer + '.png');
             $('#playerHealth').text(this.fighters[this.chosenPlayer].health);
+        }else{
+            $('#chosenFighter').css('visibility', 'hidden');
         }
         if(this.chosenEnemy){
             $('.fighterDiv[value=' + this.chosenEnemy + ']').css('visibility', 'hidden');
@@ -110,14 +115,37 @@ var starWars = {
         if(numKilled === Object.keys(this.fighters).length - 1){
             this.gameWon();
         }
-        this.chooseFighter();
-        
+        if(this.fighters[this.chosenPlayer].health >= 0){
+            this.chooseFighter();
+        }
     },
     gameLost: function(){
-        console.log("You've lost");
+        $('#attack').unbind();
+        $('#endOfGame').html("<h1>You've failed to save the galaxy!</h1><button type='button' class='btn btn-info playAgain'>Play Again?</button>");
+        $('.playAgain').on('click', function(){
+            starWars.reset();
+        });
     },
     gameWon: function(){
-        console.log("You've won");
+        $('#attack').unbind();
+        $('#endOfGame').html("<h1>You did it! Congratulations!</h1><button type='button' class='btn btn-info playAgain'>Play Again?</button>");
+        $('.playAgain').on('click', function(){
+            starWars.reset();
+        });
+    },
+    reset: function(){
+        this.chosenPlayer = '';
+        this.chosenEnemy = '';
+        Object.keys(this.fighters).forEach(element => {
+            starWars.fighters[element].health = starWars.fighters[element].baseHealth;
+            starWars.fighters[element].attack = starWars.fighters[element].baseAttack;
+            $(".fighterDiv[value=" + element + "]").css('visibility', 'visible');
+            $('#chosenFighter').css('visibility', 'hidden');
+            $('#chosenEnemy').css('visibility', 'hidden');
+        });
+        $('#endOfGame').html("");
+        this.gameStart();
+
     }
 }
 
