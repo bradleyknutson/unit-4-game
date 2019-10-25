@@ -25,14 +25,14 @@ var starWars = {
         },
         grievous: {
             health: 550,
-            baseHealth: 700,
+            baseHealth: 550,
             attack: 7,
             baseAttack: 7,
             counterAttack: 15
         },
         palpatine: {
             health: 325,
-            baseHealth: 350,
+            baseHealth: 325,
             attack: 15,
             baseAttack: 15,
             counterAttack: 35
