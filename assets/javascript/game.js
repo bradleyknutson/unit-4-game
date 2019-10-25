@@ -3,46 +3,46 @@ var starWars = {
     chosenEnemy: false,
     fighters: {
         jarJarBinks: {
-            health: 10000,
-            baseHealth: 10000,
-            attack: 5,
-            baseAttack: 5,
-            counterAttack: 20,
+            health: 825,
+            baseHealth: 825,
+            attack: 3,
+            baseAttack: 3,
+            counterAttack: 10,
         },
         generalKenobi: {
-            health: 150,
-            baseHealth: 150,
-            attack: 10,
-            baseAttack: 10,
-            counterAttack: 30
+            health: 600,
+            baseHealth: 600,
+            attack: 6,
+            baseAttack: 6,
+            counterAttack: 17
         },
         anakin: {
-            health: 200,
-            baseHealth: 200,
-            attack: 7,
-            baseAttack: 7,
+            health: 400,
+            baseHealth: 400,
+            attack: 12,
+            baseAttack: 12,
             counterAttack: 25
         },
         grievous: {
-            health: 300,
-            baseHealth: 300,
-            attack: 3,
-            baseAttack: 3,
+            health: 550,
+            baseHealth: 700,
+            attack: 7,
+            baseAttack: 7,
             counterAttack: 15
         },
         palpatine: {
-            health: 200,
-            baseHealth: 200,
-            attack: 10,
-            baseAttack: 10,
-            counterAttack: 20
+            health: 325,
+            baseHealth: 350,
+            attack: 15,
+            baseAttack: 15,
+            counterAttack: 35
         },
         darthMaul: {
-            health: 125,
-            baseHealth: 125,
-            attack: 30,
-            baseAttack: 30,
-            counterAttack: 22
+            health: 500,
+            baseHealth: 500,
+            attack: 8,
+            baseAttack: 8,
+            counterAttack: 20
         }
     },
     gameStart: function(){
