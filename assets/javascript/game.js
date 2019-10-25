@@ -80,10 +80,17 @@ var starWars = {
         }else{
             $('.fighter').on('click', function(){
                 // if($(this).attr('value') !== starWars.chosenPlayer){
+<<<<<<< HEAD
                 starWars.chosenEnemy = $(this).attr('value');
                 $('.fighter').unbind();
                 starWars.updatePage();
                 $('#chosenEnemy').css('visibility', 'visible');
+=======
+                    starWars.chosenEnemy = $(this).attr('value');
+                    $('.fighter').unbind();
+                    starWars.updatePage();
+                    $('#chosenEnemy').css('visibility', 'visible');
+>>>>>>> ed3dd06766bcf00948527a277e3cd7eb01fa2c4d
                 // }
             });
         }
