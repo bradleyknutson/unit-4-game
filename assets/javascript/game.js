@@ -1,6 +1,6 @@
 var starWars = {
-    chosenPlayer: '',
-    chosenEnemy: '',
+    chosenPlayer: false,
+    chosenEnemy: false,
     fighters: {
         jarJarBinks: {
             health: 10000,
@@ -60,21 +60,18 @@ var starWars = {
             $(".fighterDiv[value=" + this.chosenPlayer + "]").css('visibility', 'hidden');
             $('#fighterImage').attr('src', 'assets/images/' + this.chosenPlayer + '.png');
             $('#playerHealth').text(this.fighters[this.chosenPlayer].health);
-        }else{
-            $('#chosenFighter').css('visibility', 'hidden');
         }
         if(this.chosenEnemy){
             $('.fighterDiv[value=' + this.chosenEnemy + ']').css('visibility', 'hidden');
             $('#enemyImage').attr('src', 'assets/images/' + this.chosenEnemy + '.png');
             $('#enemyHealth').text(this.fighters[this.chosenEnemy].health);
-        }else{
-            $('#chosenEnemy').css('visibility', 'hidden');
         }
     },
     chooseFighter: function(){
-        if(starWars.chosenPlayer === ''){
+        if(!starWars.chosenPlayer){
             $('.fighter').on('click', function(){
                 starWars.chosenPlayer = $(this).attr('value');
+                starWars.chosenEnemy = false;
                 $('.fighter').unbind();
                 starWars.updatePage();
                 $('#chosenFighter').css('visibility', 'visible');
@@ -82,12 +79,12 @@ var starWars = {
             });
         }else{
             $('.fighter').on('click', function(){
-                if($(this).attr('value') !== starWars.chosenPlayer){
-                    starWars.chosenEnemy = $(this).attr('value');
-                    $('.fighter').unbind();
-                    starWars.updatePage();
-                    $('#chosenEnemy').css('visibility', 'visible');
-                }
+                // if($(this).attr('value') !== starWars.chosenPlayer){
+                starWars.chosenEnemy = $(this).attr('value');
+                $('.fighter').unbind();
+                starWars.updatePage();
+                $('#chosenEnemy').css('visibility', 'visible');
+                // }
             });
         }
     },
@@ -107,7 +104,7 @@ var starWars = {
     },
     enemyKilled: function(){
         var numKilled = 0;
-        this.chosenEnemy = '';
+        this.chosenEnemy = false;
         $('#chosenEnemy').css('visibility', 'hidden');
         Object.keys(this.fighters).forEach(element => {
             if(this.fighters[element].health <= 0){
@@ -136,8 +133,8 @@ var starWars = {
         });
     },
     reset: function(){
-        this.chosenPlayer = '';
-        this.chosenEnemy = '';
+        this.chosenPlayer = false;
+        this.chosenEnemy = false;
         Object.keys(this.fighters).forEach(element => {
             starWars.fighters[element].health = starWars.fighters[element].baseHealth;
             starWars.fighters[element].attack = starWars.fighters[element].baseAttack;
